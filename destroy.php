@@ -1,0 +1,4 @@
+<?php
+session_start();
+session_destroy();
+echo "<meta http-equiv=\"refresh\" content=\"0;URL='file:///C:/Users/samue/code/BDPADrive/login.html'\" />" ;   
