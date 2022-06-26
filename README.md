@@ -21,3 +21,11 @@
 - Run `npm install` to install express and other dependencies
 
 - Run `node .` to start the express server
+
+# Setting up API
+
+- Make a new file called `.env`
+
+- In the file put this: `key=YOUR_API_KEY_HERE`
+
+- This is to make sure the API Key stays secret
