@@ -87,6 +87,7 @@ class Messageshelper {
                 $_SESSION['name'] = $userData['name'];
                 $_SESSION['password'] = $userData['password'];
                 $_SESSION['username'] = $userData['username'];
+				$_SESSION['authenication_state'] = 'authenicated';
             }
             $query = "SELECT name FROM users";
             $statementusers = $connection->prepare($query);
@@ -95,6 +96,8 @@ class Messageshelper {
                 $_SESSION['log'] = 0;
                 echo "There is no user with those credentials<br>";
                 echo "<h2><a href='destroy.php'>Log In</a></h2>";
+				echo "<h2><a href='sign_up.html'>Sign_up</a></h2>";
+				echo "<h2><a href='guest.php'>...or continue as guest</a></h2>";
             }
         }
 

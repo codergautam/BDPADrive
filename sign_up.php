@@ -38,10 +38,12 @@
             echo "<h3>Sorry, that username is already taken...<h3>";
             echo "<h3>Sign Up again<h3>";
             echo "<h2><a href='sign_up.html'>Sign Up</a></h2>";
+            echo "<h2>...or you can <a href='destroy.php'>Log In</a>or <a href='guest.php'>Continue as a Guest</a></h2>";
         }elseif (in_array($name2, $names)){
             echo "<h3>Sorry, that name is already taken...<h3>";
             echo "<h3>Sign Up again<h3>";
             echo "<h2><a href='sign_up.html'>Sign Up</a></h2>";
+            echo "<h2>...or you can <a href='destroy.php'>Log In</a>or <a href='guest.php'>Continue as a Guest</a></h2>";
         }else {
             $query = "INSERT INTO users(username, password, name) VALUES (?, ?, ?)";
             $statement = $connection->prepare($query);
