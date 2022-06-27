@@ -1,0 +1,25 @@
+<?php
+session_start();
+session_destroy();
+?>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <div>
+            <h1 style="text-align: center;">Recover your Acount</h1>
+            <form action="email-login.php" method="post">
+            <div style="text-align: center;"> Enter your Email:
+                <input type="text" name="email-loginkey" />
+            </div>
+            <div style="text-align: center;">
+                <input type="submit" value="Send recovery email" />
+            </div>
+            </form>
+            <h2>...or <a href="sign_up.html">Log In</a></h2>
+            <h2>...or <a href="sign_up.html">Sign Up</a></h2>
+            <h2>...or <a href="guest.php">Continue as Guest</a></h2>
+        </div>
+    </body>
+</html>
