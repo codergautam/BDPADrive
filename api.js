@@ -37,6 +37,10 @@ class Api {
       salt: saltString
     });
   }
+
+  async getUser(username) {
+    return this.sendRequest('/users/'+username, 'GET');
+  }
 }
 
 module.exports = Api;
