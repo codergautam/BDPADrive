@@ -25,6 +25,18 @@ app.post('/signup', async (req, res) => {
   });
 });
 
+app.post('/check', async (req, res) => {
+  const { username } = req.body;
+
+  api.getUser(username).then(function(data) {
+    if(data.success) {
+      res.send(JSON.stringify(data))
+    } else {
+      res.send(data.error)
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
