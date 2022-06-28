@@ -56,6 +56,27 @@
             echo "<h2><a href='sign_up.html'>Sign Up</a></h2>";
             echo "<h2>...or you can <a href='destroy.php'>Log In</a>or <a href='guest.php'>Continue as a Guest</a></h2>";
         }else {
+            function captcha(){
+                echo "<html><body><script>
+                    captcha();
+                    function captcha() {
+                        a = Math.floor(Math.random() * 11);
+                        b = Math.floor(Math.random() * 11);
+                        let cap = prompt('Please enter the answer to continue signing up: '+a+'+'+b+' = ');
+                        if (cap != null) {
+                            c=a+b;
+                            if c == int(cap) {
+                                continue;
+                            }else {
+                                alert('Try Again');
+                                captcha();
+                            };
+                        } else {
+                            captcha();
+                        };
+                    };
+                </script></body></html>";
+            };
             $query = "INSERT INTO users(username, password, name, email) VALUES (?, ?, ?, ?)";
             $statement = $connection->prepare($query);
             $statement->bindParam(1, $_POST['usernamesignup']);
