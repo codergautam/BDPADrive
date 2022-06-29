@@ -4,26 +4,78 @@ session_destroy();
 ?>
 <html>
     <head>
-        <title>Login</title>
+        <title>Login</title><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 1px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+button {
+  border-radius: 10px;
+  background-color: #20ca8c;
+  color: white;
+  padding: 1%;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  /* width: 6%; */
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+h1 {
+  border-bottom-style: solid;
+}
+  span.psw {
+     display: block;
+     float: none;
+  }
+
+</style>
+
     </head>
     <body>
         <div>
-            <h1 style="text-align: center;">Log In to Your File System</h1>
+            <h1 style="text-align: center;">Log In to BDPA File System</h1>
             <form action="login.php" method="post">
-            <div style="text-align: center;"> Username:
-                <input type="text" name="username" />
+
+            <div style="text-align: center;"> <p>Username</p>
+                <input type="text" placeholder="Enter Username" name="username" />
             </div>
 
-            <div style="text-align: center;"> Password:
-                <input type="password" name="password" />
+            <div style="text-align: center;"> <p>Password</p>
+                <input type="password" placeholder="Enter Password" name="password" />
             </div>
             <div style="text-align: center;">
-                <input type="submit" value="Login" />
+                <button><input type="submit" value="Login" /></button>
             </div>
             </form>
-            <h3 style="text-align: center">Forgot your username or password? Use your email to <a href="email-login.html">recover your acount</a></h3>
-            <h2>...or <a href="sign_up.html">Sign Up</a></h2>
-            <h2>...or <a href="guest.php">Continue as Guest</a></h2>
+            <p style="text-align: center">Forgot your username or password? Use your email to <a href="email-login.html">recover your acount</a></p>
+            <h3>...or <a href="sign_up.html">Sign Up</a></h3>
+            <h3>...or <a href="guest.php">Continue as Guest</a></h3>
         </div>
     </body>
 </html>
