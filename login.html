@@ -20,13 +20,11 @@ input[type=text], input[type=password] {
 
 button {
   border-radius: 10px;
-  background-color: #20ca8c;
-  color: white;
   padding: 1%;
   margin: 8px;
   border: none;
   cursor: pointer;
-  /* width: 6%; */
+  width: 130px;
 }
 
 .imgcontainer {
@@ -62,15 +60,15 @@ h1 {
             <h1 style="text-align: center;">Log In to BDPA File System</h1>
             <form action="login.php" method="post">
 
-            <div style="text-align: center;"> <p>Username</p>
+            <div style="text-align: center;"> <p>Username:</p>
                 <input type="text" placeholder="Enter Username" name="username" />
             </div>
 
-            <div style="text-align: center;"> <p>Password</p>
+            <div style="text-align: center;"> <p>Password:</p>
                 <input type="password" placeholder="Enter Password" name="password" />
             </div>
             <div style="text-align: center;">
-                <button><input type="submit" value="Login" /></button>
+                <button><input style="font-size: 23px; border: none;" type="submit" value="Login" /></button>
             </div>
             </form>
             <p style="text-align: center">Forgot your username or password? Use your email to <a href="email-login.html">recover your acount</a></p>

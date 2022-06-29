@@ -5,19 +5,69 @@ session_destroy();
 <html>
     <head>
         <title>Login</title>
+        <!-- <link rel="icon" type="image/x-icon" href="image.png"> -->
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            
+            input[type=text], input[type=password] {
+              font-size: 15px;
+              width: 50%;
+              padding: 12px 20px;
+              margin: 1px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+              border-radius: 5px;
+            }
+            
+            button {
+                border-radius: 10px;
+                padding: 1%;
+                margin: 8px;
+                border: none;
+                cursor: pointer;
+                width: 250px;
+            }
+            
+            .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+            }
+            
+            img.avatar {
+              width: 40%;
+            }
+            
+            .container {
+              padding: 16px;
+            }
+            
+            span.psw {
+              float: right;
+              padding-top: 16px;
+            }
+            h1 {
+              border-bottom-style: solid;
+            }
+              span.psw {
+                 display: block;
+                 float: none;
+              }
+            
+            </style>
     </head>
     <body>
         <div>
             <h1 style="text-align: center;">Recover your Acount</h1>
             <form action="email-login.php" method="post">
-            <div style="text-align: center;"> Enter your Email:
-                <input type="text" name="email-loginkey" />
+            <div style="text-align: center;"><p> Enter your Email:</p>
+                <input type="text" name="email-loginkey" placeholder="Email"/>
             </div>
             <div style="text-align: center;">
-                <input type="submit" value="Send recovery email" />
+                <button><input style="font-size: 23px; border: none;" type="submit" value="Send recovery email"/></button>
             </div>
             </form>
-            <h2>...or <a href="sign_up.html">Log In</a></h2>
+            <h2>...or <a href="login.html">Log In</a></h2>
             <h2>...or <a href="sign_up.html">Sign Up</a></h2>
             <h2>...or <a href="guest.php">Continue as Guest</a></h2>
         </div>

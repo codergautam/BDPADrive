@@ -19,13 +19,11 @@ input[type=text], input[type=password] {
 
 button {
   border-radius: 10px;
-  background-color: #20ca8c;
-  color: white;
   padding: 1%;
   margin: 8px;
   border: none;
   cursor: pointer;
-  /* width: 6%; */
+  width: 140px;
 }
 
 .imgcontainer {
@@ -61,22 +59,22 @@ h1 {
             <h1 style="text-align: center;">Sign Up for BDPA File System</h1>
             <form action="sign_up.php" method="post">
 
-            <div style="text-align: center;"> <p>Username</p>
+            <div style="text-align: center;"> <p>Username:</p>
                 <input type="text" placeholder="Enter Username" name="usernamesignup" />
             </div>
 
-            <div style="text-align: center;"> <p>Password</p>
+            <div style="text-align: center;"> <p>Password:</p>
                 <input type="password" placeholder="Enter Password" name="passwordsignup" />
             </div>
             <div style="text-align: center;"> 
                 <p>Email</p>
                 <input type="text" placeholder="Enter Email" name="emailsignup" />
             </div>
-            <div style="text-align: center;"> <p>Name</p>
+            <div style="text-align: center;"> <p>Name:</p>
                 <input type="text" placeholder="Enter Name" name="namesignup" />
             </div>
             <div style="text-align: center;">
-                <button><input type="submit" value="Sign Up" /></button>
+                <button><input style="font-size: 23px; border: none;" type="submit" value="Sign Up" /></button>
             </div>
             </form>
             <h3>...or <a href="destroy.php">Log In</a></h3>
