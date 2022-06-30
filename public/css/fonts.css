@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&family=Bebas+Neue&family=Roboto+Slab&family=Staatliches&display=swap');
+.font-primary {
+    font-family: 'Arvo', serif;
+    font-weight: 500;
+}
+
+.font-secondary {
+    font-family: 'Bebas Neue', cursive;
+}
+
+.font-fancy {
+    font-family: 'Abril Fatface', cursive;
+    font-weight: 400;
+}
+
+.font-stark {
+    font-family: 'Staatliches', cursive;
+    font-weight: 400;
+}
+
+.font-roboto {
+    font-family: 'Roboto Slab', serif;
+}
