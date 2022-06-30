@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+img {
+  padding: 5px;
+  width: 150px;
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 45%;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+h1 {
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+  span.psw {
+     display: block;
+     float: none;
+  }
+</style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align: center;">Log In to Your File System</h1>
+        <form action="login.php" method="post">
+          <img src="https://mail-attachment.googleusercontent.com/attachment/u/1/?ui=2&ik=8d48033016&attid=0.1&permmsgid=msg-f:1736799680191282828&th=181a5a1b6fd03e8c&view=att&disp=inline&realattid=f_l4wusyy40&saddbat=ANGjdJ94CB1n9GS_ss_wQjul8ATesDPPbIn9puDLiotck_rOQC2iP4Xeki_Ahm5Qyw5Sw8V0Qr3Y6g7mzSB3ssYGVCEbNYURS3UQOhgFGw-9oYi4P2SdFKImp7cFQB6id_gu07Jd1lO4rJOrjYhbr5YVIG5UgyKEzyq-o2zcIx-oEOzMZ6_jA63iRZJHTnDSOGEt7RZPIDo3TF0SbRS018JoqSyqJkiBOEya_6fDGU3t3BvKOQtGih_Pm4MdsV0NKbPEYLEFz0Qck3dRLWcpK4Dd2tP6t_Y7KFOGCrqZgrZI_S7WuUm1dpbytRkYUY1EVSgQ_duNeSdJWLM_EknjpXgvPRKVA5SlcmaLfxAzF6aAPq98VDTIQ6Gn2y-ufL9i7NyRnzg6MNiZ_fHp9nA4Az71e4MWLX5SL7i7xsmTB8UWRbAfrK-J9VpRCNenu4RHgFPOjhvAVgpeWvZM-zaWQhlELRRJbUW64UdsyQtZKDpE5tMPJT_xaBC1KAoKAyfIJ3E7OptKJ5WVWbsbs9ROUZnxznCjUVDB93sJbh49Q92AzE2nHHxbTSsAhAjVTnnSf0Xcdcji0pituKE8KyfUvRTlMBkr7URSigdOZXS8zF4wn3V16rgJownGUY6avcsIUz_k_RVFH1Yrij3fPN3Yz1YChWXWR3g1mgafRLOMHf4AWNBriS0mAkPbDj7EcOlLul1-zhKqPOT9h1fIEFx1RNIEdHuuOcxNezk73r2OE75dmvMKEzz63D_SVIpEkdF0fkkgWjAOOY9JLm25jEeIvEfHfs8iXTTp_ZI0wQn-Ng" alt="BDPA logo" style="width:15%">
+
+        <div style="text-align: center;"> Username
+            <input type="text" placeholder="Enter Username" name="username" />
+        </div>
+
+        <div style="text-align: center;"> Password
+            <input type="password" placeholder="Enter Password" name="password" />
+        </div>
+        <div style="text-align: center;">
+            <button><input type="submit" value="Login" /></button>
+        </div>
+        </form>
+        <p style="text-align: center">Forgot your username or password? Use your email to <a href="email-login.html">recover your acount</a></p>
+        <h3>...or <a href="sign_up.html">Sign Up</a></h3>
+        <h3>...or <a href="guest.php">Continue as Guest</a></h3>
+    </div>
+</body>
+</html>
