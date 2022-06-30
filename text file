@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Embed PHP in a .html File</title>
+</head>
+<body>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Upload file here:
+      
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload file" name="submit">
+<h1><?php echo "Hello World" ?></h1>
+</body>
+</html> 
