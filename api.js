@@ -23,13 +23,32 @@ class Api {
     console.log(error)
   }
   }
+
+  async findUsernameFromEmail(userEmail) {
+    let data = await this.sendRequest("/users", 'GET');
+    let users = data.users;
+    let selectedUsername;
+    for(let i = 0; i < users.length; i++) {
+        if(users[i].email == userEmail) {
+            console.log("Confirmed Same Email");
+            console.log(users[i]);
+            selectedUsername = users[i].username;
+        }
+    }
+    return selectedUsername;
+  }
+
+  async deleteUser(username) {
+    return this.sendRequest("/users/" + username, 'DELETE');
+  }
+
   async loginUser(username, password, userData) {
 
     const saltBuffer = await passwordUtils.convertHexToBuffer(userData.salt);
 
     const { keyString  } = await passwordUtils.deriveKeyFromPassword(password, saltBuffer);
 
-    console.log(saltBuffer + "  |  " + keyString);
+    // console.log(saltBuffer + "  |  " + keyString);
 
     return this.sendRequest('/users/' + username + '/auth', 'POST', {
         key: keyString
@@ -51,6 +70,9 @@ class Api {
     });
   }
 
+  async getUserFiles(username) {
+    return this.sendRequest('/filesystem/' + username + '/search', 'GET');
+  }
   async getUser(username) {
     return this.sendRequest('/users/'+username, 'GET');
   }

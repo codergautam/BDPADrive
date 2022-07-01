@@ -22,33 +22,87 @@ app.get('/login', async(req, res) => {
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
-  api.createUser(username, email, password).then(function(data) {
+  let successful;
+  
+  await api.createUser(username, email, password).then(function(data) {
+    successful = data.success;
     if(data.success) {
-      let userData = data.user;
-      console.log(userData);
-      console.log("Successs!");
-      res.render("dashboard", userData);
+      console.log("Successfully created")
     } else {
       console.log("Error...");
       res.send(data.error)
     }
   });
+  
+  if(successful) {
+    let data = await api.getUser(username).then(function(data) {
+      if(data.success) {
+        return data;
+      } else {
+        return;
+      }
+    });
+
+    let userData = data.user;
+    console.log("Successs!");
+    
+    let everyUser = await api.sendRequest('/users', 'GET');
+    let totalUsers = everyUser.users.length;
+  
+    let files = await api.getUserFiles();
+    let nodes = files.nodes;
+    let personalFileCount = (nodes) ? nodes.length : 0;
+  
+    console.log("Success!")
+  
+    userData.totalUsers = totalUsers;
+    userData.personalFileCount = personalFileCount;
+    userData.password = password;
+  
+    res.render("dashboard", userData);
+  }
 });
+
+app.get('/delete', async (req, res) => {
+  const { username } = req.body;
+  api.deleteUser(username);
+  res.redirect('/');
+})
 
 app.post('/login', async (req, res) => {
   const {username, password} = req.body;
   // console.log(`Username: ${username}, Password: ${password}`);
-  let data = await api.getUser(username).then(function(data) {
+  if(username.includes("@")) {
+    correctUsername = await api.findUsernameFromEmail(username);
+  } else {
+    correctUsername = username;
+  }
+  
+  console.log(correctUsername);
+
+  let data = await api.getUser(correctUsername).then(function(data) {
     if(data.success) {
       return data;
     } else {
       return;
     }
   });
+  
+  let everyUser = await api.sendRequest('/users', 'GET');
+  let totalUsers = everyUser.users.length;
+
   let userData = data.user;
-  api.loginUser(username, password, userData).then(function(data) {
+  let files = await api.getUserFiles;
+  let nodes = files.nodes;
+  let personalFileCount = (nodes) ? nodes.length : 0;
+
+  
+  console.log(`You are one of ${totalUsers} users, with ${personalFileCount} files`);
+  api.loginUser(correctUsername, password, userData).then(function(data) {
     if(data.success) {
       console.log("Succesful Login");
+      userData.totalUsers = totalUsers;
+      userData.personalFileCount = personalFileCount;
       userData.password = password;
       res.render("dashboard", userData);
     } else {
