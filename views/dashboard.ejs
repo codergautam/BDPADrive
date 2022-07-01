@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <%- include("./bulma") %> 
+    <%- include("./icons") %>
+    <!-- <link rel="stylesheet" href="./css/fonts.css"> -->
+    <title>Document</title>
+    
+</head>
+<body>
+    <%- include("./navbar") %>
+    <div class="section mt-6">
+        <div class="columns">
+            <div class="column is-4">
+                <div class="box">
+                    <div class="content mx-auto">
+                        <p class="title is-1 mb-5">Welcome,</p>
+                        <p class="subtitle is-3"><%- username %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-offset-1 is-5">
+                <div class="content">
+                    <p class="is-size-5"><strong>Username: </strong><%- username %> </p>
+                    <p class="is-size-5"><strong>Email: </strong><%- email %> </p>
+                    <p class="is-size-5"><strong>User Id: </strong><%- user_id %> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleVisibility() {
+            let password = "<%- password -%>";
+            let passwordElem = document.getElementById("password");
+            console.log(passwordElem.innerText);
+            if(passwordElem.innerText == "Password: ") {
+                console.log("Showing Password");
+                passwordElem.innerHTML = "<strong>Password: </strong><%- password %>";
+                passwordElem.innerHTML += "<button onclick='toggleVisibility()'><span class='icon' onclick='toggleVisibility()''><i class='fa-solid fa-eye'></i></span></button>";
+                return;
+            } 
+            if(passwordElem.innerText == "Password: " + password) {
+                console.log("Hiding Password");
+                passwordElem.innerHTML = "<strong>Password: </strong>";
+                passwordElem.innerHTML += "<button onclick='toggleVisibility()'><span class='icon' onclick='toggleVisibility()''><i class='fa-solid fa-eye-slash'></i></span></button>";
+                return;
+            } 
+        }
+    </script>
+</body>
+</html>
