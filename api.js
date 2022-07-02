@@ -73,6 +73,7 @@ class Api {
   async getUserFiles(username) {
     return this.sendRequest('/filesystem/' + username + '/search', 'GET');
   }
+
   async getUser(username) {
     return this.sendRequest('/users/'+username, 'GET');
   }

@@ -99,3 +99,4 @@ module.exports = {
   convertBufferToHex,
   convertHexToBuffer
 };
+

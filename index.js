@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 app.use("/", express.static(__dirname + "/public"));
+
 app.set("view engine", "ejs");
 
 app.get('/login', async(req, res) => {
@@ -21,6 +22,7 @@ app.get('/login', async(req, res) => {
 
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
+
 
   let successful;
   
@@ -109,6 +111,13 @@ app.post('/login', async (req, res) => {
       console.log("Failure");
     }
   });
+  api.createUser(username, email, password).then(function(data) {
+    if(data.success) {
+      res.send("success")
+    } else {
+      res.send(data.error)
+    }
+  });
 });
 
 app.post('/check', async (req, res) => {
@@ -126,4 +135,3 @@ app.post('/check', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
-
