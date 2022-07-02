@@ -96,4 +96,7 @@ const deriveKeyFromPassword = async (passwordString, saltBuffer) => {
 
 module.exports = {
   deriveKeyFromPassword,
+  convertBufferToHex,
+  convertHexToBuffer
 };
+
