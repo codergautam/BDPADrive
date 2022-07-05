@@ -9,6 +9,9 @@ const passwordUtils = require('./utils/password');
 
 const api = new Api(process.env.key);
 
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
@@ -19,6 +22,10 @@ app.set("view engine", "ejs");
 app.get('/login', async(req, res) => {
   res.render("login")
 })
+
+app.get('/signup', async(req, res) => {
+  res.redirect('/');
+});
 
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
@@ -65,14 +72,25 @@ app.post('/signup', async (req, res) => {
   }
 });
 
+app.get('/fileSystem', async (req, res) => {
+  let userData = cookieDataToObject(req);
+  res.render('fileSystem', userData);
+});
+
 app.get('/delete', async (req, res) => {
   const { username } = req.body;
   api.deleteUser(username);
   res.redirect('/');
 })
 
+app.get('/dashboard', async (req, res) => {
+  let userData = cookieDataToObject(req);
+  res.render('dashboard', userData);
+})
+
 app.post('/login', async (req, res) => {
   const {username, password} = req.body;
+
   // console.log(`Username: ${username}, Password: ${password}`);
   if(username.includes("@")) {
     correctUsername = await api.findUsernameFromEmail(username);
@@ -106,16 +124,15 @@ app.post('/login', async (req, res) => {
       userData.totalUsers = totalUsers;
       userData.personalFileCount = personalFileCount;
       userData.password = password;
-      res.render("dashboard", userData);
+      let cookieData = userData;
+      cookieData.password = "";
+      cookieData.salt = "";
+      res.cookie("cookieData", cookieData);
+      console.log(req.cookies);
+      console.log(cookieDataToObject(req));
+      res.redirect('/dashboard');
     } else {
       console.log("Failure");
-    }
-  });
-  api.createUser(username, email, password).then(function(data) {
-    if(data.success) {
-      res.send("success")
-    } else {
-      res.send(data.error)
     }
   });
 });
@@ -135,3 +152,9 @@ app.post('/check', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
+
+
+function cookieDataToObject(req) {
+  let formattedData = JSON.parse(JSON.stringify(req.cookies.cookieData));
+  return formattedData;
+}

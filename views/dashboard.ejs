@@ -19,15 +19,15 @@
                 <div class="box">
                     <div class="content mx-auto">
                         <p class="title is-1 mb-5 font-bebas">Welcome,</p>
-                        <p class="subtitle is-3 font-staat"><%- username %></p>
+                        <p class="subtitle is-3 font-staat"><%- locals.username %></p>
                     </div>
                 </div>
             </div>
             <div class="column is-offset-1 is-5">
                 <div class="content">
-                    <p class="is-size-5 font-arvo"><strong class="font-oswald">Username: </strong><%- username %> </p>
-                    <p class="is-size-5 font-arvo"><strong class="font-oswald">Email: </strong><%- email %> </p>
-                    <p class="is-size-5 font-arvo"><strong class="font-oswald">User Id: </strong><%- user_id %> </p>
+                    <p class="is-size-5 font-arvo"><strong class="font-oswald">Username: </strong><%- locals.username %> </p>
+                    <p class="is-size-5 font-arvo"><strong class="font-oswald">Email: </strong><%- locals.email %> </p>
+                    <p class="is-size-5 font-arvo"><strong class="font-oswald">User Id: </strong><%- locals.user_id %> </p>
                 </div>
             </div>
         </div>
@@ -36,13 +36,13 @@
         <div class="level-item has-text-centered">
           <div>
             <p class="heading is-size-6 font-bebas">You Are One Of</p>
-            <p class="title is-size-2 font-oswald"><%- totalUsers %> Users</p>
+            <p class="title is-size-2 font-oswald"><%- locals.totalUsers %> Users</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading is-size-6 font-bebas">You Have</p>
-            <p class="title is-size-2 font-oswald"><%- personalFileCount %> Files</p>
+            <p class="title is-size-2 font-oswald"><%- locals.personalFileCount %> Files</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
@@ -76,24 +76,5 @@
             Delete Account
         </button>
       </div>
-    <script>
-        function toggleVisibility() {
-            let password = "<%- password -%>";
-            let passwordElem = document.getElementById("password");
-            console.log(passwordElem.innerText);
-            if(passwordElem.innerText == "Password: ") {
-                console.log("Showing Password");
-                passwordElem.innerHTML = "<strong>Password: </strong><%- password %>";
-                passwordElem.innerHTML += "<button onclick='toggleVisibility()'><span class='icon' onclick='toggleVisibility()''><i class='fa-solid fa-eye'></i></span></button>";
-                return;
-            } 
-            if(passwordElem.innerText == "Password: " + password) {
-                console.log("Hiding Password");
-                passwordElem.innerHTML = "<strong>Password: </strong>";
-                passwordElem.innerHTML += "<button onclick='toggleVisibility()'><span class='icon' onclick='toggleVisibility()''><i class='fa-solid fa-eye-slash'></i></span></button>";
-                return;
-            } 
-        }
-    </script>
 </body>
 </html>
