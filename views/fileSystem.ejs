@@ -19,13 +19,13 @@
                 <div class="box">
                     <div class="content mx-auto">
                         <p class="title is-1 mb-5 font-bebas">Welcome,</p>
-                        <p class="subtitle is-3 font-staat"><%- locals.username %></p>
+                        <p class="subtitle is-3 font-staat"><%- userData.username %></p>
                     </div>
                 </div>
             </div>
             <div class="column is-offset-1 is-5">
                 <div class="content">
-                    <p class="is-size-3 font-arvo mb-2">You Have <strong><%- locals.personalFileCount %></strong> Files</p>
+                    <p class="is-size-3 font-arvo mb-2">You Have <strong><%- userData.personalFileCount %></strong> Files</p>
                     <div class="title">
                         <span>
                             <i class="fa-solid fa-file fas fa-2x"></i>
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="columns">
-            <% if (locals.files == null) { %>
+            <% if (!userData.files) { %>
             <div class="column is-2">
                 <div class="box">
                     <div class="content">
@@ -87,8 +87,8 @@
                     </div>
                 </div>
             </div>
-            <% } %>  
-            <% locals.files.forEach(function (file) { %>
+            <% } else { %>  
+            <% userData.files.forEach(function (file) { %>
                 <% if (file.type == "file") { %> 
                     <div class="column is-2">
                         <div class="box">
@@ -109,6 +109,7 @@
                     </div>
                 <% } %> 
             <% }) %> 
+            <% } %>
         </div>
     </div>
     <div class="modal" id="createFile">
