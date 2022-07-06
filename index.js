@@ -48,32 +48,36 @@ app.post('/signup', async (req, res) => {
       if(data.success) {
         return data;
       } else {
-        return;
+        return false;
       }
     });
-
-    let userData = data.user;
-    console.log("Successs!");
+    if(data) {
+      let userData = data.user;
+      console.log("Successs!");
+      
+      let everyUser = await api.sendRequest('/users', 'GET');
+      let totalUsers = everyUser.users.length;
     
-    let everyUser = await api.sendRequest('/users', 'GET');
-    let totalUsers = everyUser.users.length;
-  
-    let files = await api.getUserFiles();
-    let nodes = files.nodes;
-    let personalFileCount = (nodes) ? nodes.length : 0;
-  
-    console.log("Success!")
-  
-    userData.totalUsers = totalUsers;
-    userData.personalFileCount = personalFileCount;
-    userData.password = password;
-  
-    res.render("dashboard", userData);
+      let files = await api.getUserFiles();
+      let nodes = files.nodes;
+      let personalFileCount = (nodes) ? nodes.length : 0;
+    
+      console.log("Success!")
+    
+      userData.totalUsers = totalUsers;
+      userData.personalFileCount = personalFileCount;
+      res.cookie("cookieData", userData);
+    
+      res.render("dashboard", userData);
+    } else {
+      res.redirect("/")
+    }
   }
 });
 
 app.get('/fileSystem', async (req, res) => {
   let userData = cookieDataToObject(req);
+  (userData.files) ? console.log(userData.files) : console.log("No Files Exist");
   res.render('fileSystem', userData);
 });
 
@@ -82,11 +86,9 @@ app.post('/createFile', async (req, res) => {
   const { fileName, textContent } = req.body;
   let username = userData.username;
   let data = await api.createFile(username, fileName, textContent);
-  userData.files = await api.getUserFiles(username);
-  let files = await api.getUserFiles(username);
-  let nodes = files.nodes;
-  let personalFileCount = (nodes) ? nodes.length : 0;
-  userData.personalFileCount = personalFileCount;
+  let fileData = await api.getUserFiles(username);
+  userData.files = fileData.nodes;
+  userData.personalFileCount = (userData.files) ? userData.files.length : 0;
   res.cookie('cookieData', userData);
   res.redirect('./dashboard');
 });
@@ -119,37 +121,40 @@ app.post('/login', async (req, res) => {
       console.log(data);
       return data;
     } else {
-      return;
+      return false;
     }
   });
-  
-  let everyUser = await api.sendRequest('/users', 'GET');
-  let totalUsers = everyUser.users.length;
+  if(data) {
+    let everyUser = await api.sendRequest('/users', 'GET');
+    let totalUsers = everyUser.users.length;
 
-  let userData = data.user;
-  let files = await api.getUserFiles(username);
-  let nodes = files.nodes;
-  let personalFileCount = (nodes) ? nodes.length : 0;
+    let userData = data.user;
+    let files = await api.getUserFiles(username);
+    let nodes = files.nodes;
+    let personalFileCount = (nodes) ? nodes.length : 0;
 
-  
-  console.log(`You are one of ${totalUsers} users, with ${personalFileCount} files`);
-  api.loginUser(correctUsername, password, userData).then(function(data) {
-    if(data.success) {
-      console.log("Succesful Login");
-      userData.totalUsers = totalUsers;
-      userData.personalFileCount = personalFileCount;
-      userData.password = password;
-      let cookieData = userData;
-      cookieData.password = "";
-      cookieData.salt = "";
-      res.cookie("cookieData", cookieData);
-      // console.log(req.cookies);
-      // console.log(cookieDataToObject(req));
-      res.redirect('/dashboard');
-    } else {
-      console.log("Failure");
-    }
-  });
+    
+    console.log(`You are one of ${totalUsers} users, with ${personalFileCount} files`);
+    api.loginUser(correctUsername, password, userData).then(function(data) {
+      if(data.success) {
+        console.log("Succesful Login");
+        userData.totalUsers = totalUsers;
+        userData.personalFileCount = personalFileCount;
+        userData.password = password;
+        let cookieData = userData;
+        cookieData.password = "";
+        cookieData.salt = "";
+        res.cookie("cookieData", cookieData);
+        // console.log(req.cookies);
+        // console.log(cookieDataToObject(req));
+        res.redirect('/dashboard');
+      } else {
+        console.log("Failure");
+      }
+    });
+  } else {
+    res.redirect("/") //This is where the error screen would pop up
+  }
 });
 
 app.post('/check', async (req, res) => {

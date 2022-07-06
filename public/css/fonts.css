@@ -5,6 +5,10 @@
     font-weight: 500;
 }
 
+.font-oswald-medium {
+    font-family: 'Oswald', cursive;
+    font-weight: 500;
+}
 .font-oswald {
     font-family: 'Oswald', cursive;
 }
