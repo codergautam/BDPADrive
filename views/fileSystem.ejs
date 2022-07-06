@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <%- include("./bulma") %> 
+    <%- include("./icons") %>
+    <!-- <link rel="stylesheet" href="./css/fonts.css"> -->
+    <title>Document</title>
+    
+</head>
+<body>
+    <%- include("./navbar") %>
+    <div class="section mt-6">
+        <div class="columns">
+            <div class="column is-4">
+                <div class="box">
+                    <div class="content mx-auto">
+                        <p class="title is-1 mb-5 font-bebas">Welcome,</p>
+                        <p class="subtitle is-3 font-staat"><%- locals.username %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-offset-1 is-5">
+                <div class="content">
+                    <p class="is-size-3 font-arvo mb-2">You Have <strong><%- locals.personalFileCount %></strong> Files</p>
+                    <div class="title">
+                        <span>
+                            <i class="fa-solid fa-file fas fa-2x"></i>
+                        </span>
+                        <span>
+                            <i class="fa-solid fa-folder fas fa-2x ml-5"></i>                        
+                        </span>
+                        <span>
+                            <i class="fa-solid fa-download fas fa-2x ml-5"></i>
+                        </span>
+                    </div>
+                    <div class="title">
+                            <button data-target="createFile"  class="is-rounded is-medium js-modal-trigger button is-link is-light">
+                                <span>
+                                    <i class="fa-solid fa-file-circle-plus fas fa-2x has-text-link"></i>
+                                </span>
+                            </button>
+                            <button  data-target="createFolder" class="is-rounded is-medium js-modal-trigger button is-link is-light">
+                                <span>
+                                    <i class="fa-solid fa-folder-plus fas fa-2x has-text-link"></i>
+                                </span>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-3">
+                <div class="content">
+                    <div>
+                        <div class="notification is-primary">
+                            <button class="delete"></button>
+                            <p class="font-staat is-size-4">Example Folder
+                                <span>
+                                    <i class="fa-solid fa-folder fas fa-lg ml-5"></i>                        
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-2">
+                <div class="box">
+                    <div class="content">
+                        <div class="title">
+                            <span>
+                                <i class="ml-2 fa-solid fa-file fas fa-2x"></i>
+                            </span>
+                        </div>
+                        <p class="is-size-4 font-staat mb-1">
+                            Example File
+                        </p>
+                        <p class="is-size-6 is-italic font-staat">
+                            Contains text content...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="createFile" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <p>Modal JS example</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+    <%- include("./modalCode") %> 
+</body>
+</html>

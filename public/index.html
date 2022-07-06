@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="./css/fonts.css">
+  <title>Hello world</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar py-3 px-6" role="navigation" aria-label="main navigation" style="box-shadow: 0px 15px 20px #e8e8ff">
+    <div class="navbar-brand">
+      <a class="image is-48x48">
+        <img src="./images/bdpa_logo.png">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item is-size-3 font-bebas" href="./">
+          BDPA Application
+        </a>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item font-staat">
+          <a class="button is-link is-size-5" href="./">
+            Sign Up
+          </a>
+        </div>
+        <div class="navbar-item font-staat">
+          <a class="has-text-link is-size-5" href="./login">
+           Log In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <div class="columns mt-6">
+      <div class="column mx-auto has-text-centered is-3">
+        <div class="content">
+          <form action="/signup" method="post">
+            <img src="./images/bdpa_logo.png" alt="" class=" mx-auto image is-96x96">
+            <div class="mt-4">
+              <input class="font-oswald input mt-2" type="text" name="username" placeholder="Username: John Smith...">
+            </div>
+            <div>
+              <input class="font-oswald input mt-2" type="email" name="email" placeholder="Email: user@email.com">
+            </div>
+            <div>
+              <input class="font-oswald input mt-2" type="password" name="password" placeholder="Password: 1234">
+            </div>
+            <div>
+              <input class="button is-link m mt-2" type="submit" value="Sign up">
+            </div> 
+          </form>
+      </div>
+  </div>
+  <!-- <form class="form-signin"  action="/signup" method="post">
+    <img class="mb-4" src="./images/bdpa_logo.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign Up</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form> -->
+<!-- Navbar -->
+  <!-- <div class="columns mt-5">
+    <div class="column">
+      <h1>signup (works)</h1>
+      signup form
+      <form action="/signup" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Sign up">
+      </form>
+      <h1>check user</h1>
+      <form action="/check" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="submit" value="Check">
+      </form>
+    </div>
+  </div>   -->
+  <script src="./userFunctions.js" type="module"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Add a click event on each of them
+$navbarBurgers.forEach( el => {
+  el.addEventListener('click', () => {
+
+    // Get the target from the "data-target" attribute
+    const target = el.dataset.target;
+    const $target = document.getElementById(target);
+
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    el.classList.toggle('is-active');
+    $target.classList.toggle('is-active');
+
+  });
+});
+
+});
+  </script>
+</body>
+</html>

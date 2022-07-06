@@ -1,0 +1,71 @@
+
+<html lang="en">
+    <%- include("./icons") %> 
+    <nav class="navbar py-3 px-6" role="navigation" aria-label="main navigation" style="box-shadow: 0px 15px 20px #e8e8ff">
+      <div class="navbar-brand">
+        <a class="image is-48x48">
+          <img src="./images/bdpa_logo.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item is-size-4 font-bebas">
+            BDPA Application
+          </a>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary font-staat" href="./index.html">
+                 Log Out
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item font-staat">
+            <a class="has-text-link is-size-5" href="./fileSystem">
+             File System
+            </a>
+          </div>
+          <div class="navbar-item font-staat">
+            <a class="has-text-link is-size-5" href="./login"">
+            <span>
+              <i class="fa-solid fa-user"></i>
+            </span>
+             Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+  
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+  
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+  
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+  
+    });
+  });
+  
+  });
+    </script>
+</html>
