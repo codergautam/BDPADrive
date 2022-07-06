@@ -128,8 +128,8 @@ app.post('/login', async (req, res) => {
       cookieData.password = "";
       cookieData.salt = "";
       res.cookie("cookieData", cookieData);
-      console.log(req.cookies);
-      console.log(cookieDataToObject(req));
+      // console.log(req.cookies);
+      // console.log(cookieDataToObject(req));
       res.redirect('/dashboard');
     } else {
       console.log("Failure");
