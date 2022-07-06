@@ -98,9 +98,11 @@
                                         <i class="ml-2 fa-solid fa-file fas fa-2x"></i>
                                     </span>
                                 </div>
-                                <p class="is-size-4 font-oswald-medium mb-1">
-                                    <%= file.name %> 
-                                </p>
+                                <a href="/file/<%- file.node_id %>">
+                                    <p class="is-size-4 font-staat mb-1">
+                                        <%- file.name %>
+                                    </p>
+                                    </a>
                                 <p class="is-size-6 is-italic font-staat">
                                     Owned by <%= file.owner %> 
                                 </p>

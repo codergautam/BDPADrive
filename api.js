@@ -88,6 +88,10 @@ class Api {
     return this.sendRequest('/filesystem/' + username + '/search', 'GET');
   }
 
+  async getFile(username, fileId) {
+    return this.sendRequest('/filesystem/' + username + '/' + fileId, 'GET');
+  }
+
   async getUser(username) {
     return this.sendRequest('/users/'+username, 'GET');
   }
