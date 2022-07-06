@@ -1,0 +1,28 @@
+<html>
+    <div class="column is-2">
+        <div class="box px-2">
+            <div class="content">
+                <div class="title">
+                    <span>
+                        <i class="ml-2 fa-solid fa-file fas fa-2x"></i>
+                    </span>
+                </div>
+                <p class="is-size-4 font-oswald-medium mb-1">
+                    <%= name %> 
+                </p>
+                <p class="is-size-6 is-italic font-staat">
+                    Owned by <%= owner %> 
+                </p>
+                <div class="is-grouped field">
+                    <button class="button is-primary font-arvo">
+                        View
+                    </button>
+                    <form action="./deleteFile" method="POST">
+                        <input type="submit"  class="ml-2 button is-danger font-arvo" value="Delete">
+                        <input type="hidden" name="fileId" value="<%= node_id %> ">
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+</html>

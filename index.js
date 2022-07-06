@@ -81,6 +81,18 @@ app.get('/fileSystem', async (req, res) => {
   res.render('fileSystem', userData);
 });
 
+app.post('/deleteFile', async (req, res) => {
+  console.log("Deleting File");
+  let userData = cookieDataToObject(req);
+  let username = userData.username;
+  let node_id = req.body;
+  await api.sendRequest("/filesystem/" + username + "/" + node_id, "DELETE");
+  let files = await api.getUserFiles(username);
+  userData.files = files;
+  userData.personalFileCount--;
+  res.cookie("cookieData", userData);
+  res.redirect("/fileSystem");
+})
 app.post('/createFile', async (req, res) => {
   let userData = cookieDataToObject(req);
   const { fileName, textContent } = req.body;
