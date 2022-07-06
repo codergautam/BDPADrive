@@ -1,0 +1,79 @@
+<?php
+session_start();
+session_destroy();
+?>
+<html>
+    <head>
+        <title>Login</title><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 1px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+button {
+  border-radius: 10px;
+  padding: 1%;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  width: 130px;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+h1 {
+  border-bottom-style: solid;
+}
+  span.psw {
+     display: block;
+     float: none;
+  }
+
+</style>
+
+    </head>
+    <body>
+        <div>
+            <h1 style="text-align: center;">Log In to BDPA File System</h1>
+            <form action="login.php" method="post">
+
+            <div style="text-align: center;"> <p>Username:</p>
+                <input type="text" placeholder="Enter Username" name="username" />
+            </div>
+
+            <div style="text-align: center;"> <p>Password:</p>
+                <input type="password" placeholder="Enter Password" name="password" />
+            </div>
+            <div style="text-align: center;">
+                <button><input style="font-size: 23px; border: none;" type="submit" value="Login" /></button>
+            </div>
+            </form>
+            <p style="text-align: center">Forgot your username or password? Use your email to <a href="email-login.html">recover your acount</a></p>
+            <h3>...or <a href="sign_up.html">Sign Up</a></h3>
+            <h3>...or <a href="guest.php">Continue as Guest</a></h3>
+        </div>
+    </body>
+</html>

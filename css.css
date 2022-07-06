@@ -1,0 +1,139 @@
+.background{
+    background-attachment:fixed; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 100%;
+}
+
+
+/* INDEX.HTML */
+
+.headinin{
+    color:red; 
+    text-align:center;
+    font-size:700%;
+}  
+.noheadinin{
+    color:blue; 
+    font-size:185%;
+} 
+
+/* END OF INDEX.HTML */
+
+
+
+/* SEASON.HTML */
+
+.backgroundsea{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+* {
+    box-sizing: border-box;
+}
+.columnsea {
+    float: left;
+    width: 50%;
+    padding: 50px;
+    text-align: center;
+    font-size: 65px;
+    cursor: pointer;
+    color: white;
+}
+
+.containerTab {
+    padding: 40px;
+    color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Closable button inside the image */
+.closebtn {
+    float: right;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.headinsea{
+    color:black; 
+    text-align:center; 
+    font-size:600%;
+}
+
+/* END OF SEASON.HTML */
+
+
+
+/* SUBJECT.HTML */
+
+.img-1sub, .img-2sub, .img-3sub {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-1sub {
+    background-image: url("https://www.incimages.com/uploaded_files/image/1920x1080/getty_470493341_20001333200092800_398689.jpg");
+    min-height: 100%;
+}
+
+.img-2sub {
+    background-image: url("https://media.istockphoto.com/vectors/math-equations-written-on-a-blackboard-vector-id1219382595?k=20&m=1219382595&s=612x612&w=0&h=c6Sl7WmSHRzGBN7ZQmClLIhcv55vjStOPKc-GrpBseU=");
+    min-height: 100%;
+}
+
+.img-3sub {
+    background-image: url("https://i.ytimg.com/vi/Kp2bYWRQylk/maxresdefault.jpg");
+    min-height: 100%;
+}
+.headinsub{
+    color:lime; 
+    text-align:center; 
+    font-size:700%;
+}
+.subheadinsub{
+    color:white; 
+    text-align:center; 
+    font-size:350%;
+}
+.mathysub{
+    color:blue; 
+    text-align:center; 
+    font-size:950%;
+}
+.linkersub{
+    color:red; 
+    text-align:right; 
+    font-size:400%;
+}
+
+/* END OF SUBJECT.HTML */
+
+
+
+/* SPORT.HTML*/
+
+.centersport {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footysport{
+    text-align:center; 
+    font-size:600%; 
+    color:lime;
+}
+
+/* END OF SPORT.HTML*/
+.circe{
+    text-align:center; 
+    font-size:120px; 
+    color:lime;
+}
