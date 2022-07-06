@@ -87,8 +87,8 @@
                     </div>
                 </div>
             </div>
-            <% } else { %>  
-            <% userData.files.forEach(function (file) { %>
+            <% } else if(locals.files && (locals.files.length > 0)) { %>  
+            <% locals.files.forEach(function (file) { %>
                 <% if (file.type == "file") { %> 
                     <%- include("./fileCard"), file %> 
                 <% } %> 
