@@ -81,18 +81,6 @@ app.get('/fileSystem', async (req, res) => {
   res.render('fileSystem', {userData});
 });
 
-app.post('/deleteFile', async (req, res) => {
-  console.log("Deleting File");
-  let userData = cookieDataToObject(req);
-  let username = userData.username;
-  let node_id = req.body;
-  await api.sendRequest("/filesystem/" + username + "/" + node_id, "DELETE");
-  let files = await api.getUserFiles(username);
-  userData.files = files;
-  userData.personalFileCount--;
-  res.cookie("cookieData", userData);
-  res.redirect("/fileSystem");
-})
 app.post('/createFile', async (req, res) => {
   let userData = cookieDataToObject(req);
   const { fileName, textContent } = req.body;
@@ -105,30 +93,18 @@ app.post('/createFile', async (req, res) => {
   res.redirect('./fileSystem');
 });
 
-// app.get("/file?/*?/:fileName", async (req, res) => {
-//   let userData = cookieDataToObject(req);
-//   let username = userData.username;
-//   if(!username) return res.send("You are not logged in");
-//   let fileName = req.params.fileName;
-//   let path = Object.values(req.params);
-//   path.pop();
-//   path = path.join("/");
-//   console.log(req.params);
-//   // let fileData = await api.getFile(username, fileName);
-//   // let fileContent = fileData.node.content;
-//   // get file content
-//   // res.render('file', {fileContent, fileName, userData});
-// });
-
-app.get("/file/:fileName", async (req, res) => {
+app.post('/deleteFile', async (req, res) => {
+  console.log("Deleting File");
   let userData = cookieDataToObject(req);
   let username = userData.username;
-  if(!username) return res.send("You are not logged in");
-  let fileName = req.params.fileName;
-
-  let fileData = await api.getFile(username, fileName);
-  res.render('file', {file: fileData.nodes[0]});
-});
+  let node_id = req.body;
+  await api.sendRequest("/filesystem/" + username + "/" + node_id, "DELETE");
+  let files = await api.getUserFiles(username);
+  userData.files = files;
+  userData.personalFileCount--;
+  res.cookie("cookieData", userData);
+  res.redirect("/fileSystem");
+})
 
 app.get('/delete', async (req, res) => {
   let userData = cookieDataToObject(req);
