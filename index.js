@@ -77,9 +77,23 @@ app.get('/fileSystem', async (req, res) => {
   res.render('fileSystem', userData);
 });
 
+app.post('/createFile', async (req, res) => {
+  let userData = cookieDataToObject(req);
+  const { fileName, textContent } = req.body;
+  let username = userData.username;
+  let data = await api.createFile(username, fileName, textContent);
+  userData.files = await api.getUserFiles(username);
+  let files = await api.getUserFiles(username);
+  let nodes = files.nodes;
+  let personalFileCount = (nodes) ? nodes.length : 0;
+  userData.personalFileCount = personalFileCount;
+  res.cookie('cookieData', userData);
+  res.redirect('./dashboard');
+});
+
 app.get('/delete', async (req, res) => {
-  const { username } = req.body;
-  api.deleteUser(username);
+  let userData = cookieDataToObject(req);
+  api.deleteUser(userData.username);
   res.redirect('/');
 })
 
@@ -102,6 +116,7 @@ app.post('/login', async (req, res) => {
 
   let data = await api.getUser(correctUsername).then(function(data) {
     if(data.success) {
+      console.log(data);
       return data;
     } else {
       return;
@@ -112,7 +127,7 @@ app.post('/login', async (req, res) => {
   let totalUsers = everyUser.users.length;
 
   let userData = data.user;
-  let files = await api.getUserFiles;
+  let files = await api.getUserFiles(username);
   let nodes = files.nodes;
   let personalFileCount = (nodes) ? nodes.length : 0;
 

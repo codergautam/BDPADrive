@@ -70,12 +70,36 @@ class Api {
     });
   }
 
+  async createFile(username, name, textContent, tags = [" "]) {
+    return this.sendRequest('/filesystem/' + username, 'POST', {
+      type: 'file',
+      name: name, 
+      text: textContent,
+      tags: tags,
+      lock: {
+        user: username,
+        client: this.makeid(12),
+        createdAt: Date.now()
+      }
+    })
+  }
+
   async getUserFiles(username) {
     return this.sendRequest('/filesystem/' + username + '/search', 'GET');
   }
 
   async getUser(username) {
     return this.sendRequest('/users/'+username, 'GET');
+  }
+
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+    return result;
   }
 }
 

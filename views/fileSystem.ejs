@@ -88,17 +88,61 @@
             </div>
         </div>
     </div>
-    <div id="createFile" class="modal">
+    <div class="modal" id="createFile">
         <div class="modal-background"></div>
-        <div class="modal-content">
-          <div class="box">
-            <p>Modal JS example</p>
-            <!-- Your content -->
-          </div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">File Editor</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <form action="/createFile" method="POST">
+          <section class="modal-card-body">
+            <div class="container">
+                    <div class="mt-0">
+                      <p class="is-size-4 font-bebas">File Name: </p>
+                      <input class="font-oswald input mt-2" type="text" name="fileName" placeholder="Epic File v4.0">
+                    </div>
+                    <div class="mt-4">
+                        <p class="is-size-4 font-bebas">Contents : </p>
+                        <textarea class="font-oswald mt-2 textarea is-large" name="textContent" placeholder="File Text Contains...."></textarea>
+                    </div>
+            </div>
+          </section>
+          <footer class="modal-card-foot">
+            <input type="submit" value="Create File" class="button is-primary" data-dismiss="modal"/>
+            <button class="button is-danger" data-dismiss="modal">Cancel</button>
+          </footer>
+        </form>
         </div>
-      
-        <button class="modal-close is-large" aria-label="close"></button>
       </div>
+    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">File Editor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/fileSystem" method="POST">
+                <div class="modal-body">
+                    <div class="container">
+                            <div class="mt-0">
+                              <input class="font-oswald input mt-2" type="text" name="fileName" placeholder="Epic File v4.0">
+                            </div>
+                            <div class="mt-4">
+                                <textarea class="font-oswald mt-2 textarea is-large" placeholder="File Text Contains...."></textarea>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn is-primary" data-dismiss="modal">Create File</button>
+                    <input type="submit" class="btn is-danger" data-dismiss="modal">Cancel</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <%- include("./modalCode") %> 
 </body>
 </html>
