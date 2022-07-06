@@ -78,7 +78,7 @@ app.post('/signup', async (req, res) => {
 app.get('/fileSystem', async (req, res) => {
   let userData = cookieDataToObject(req);
   (userData.files) ? console.log(userData.files) : console.log("No Files Exist");
-  res.render('fileSystem', userData);
+  res.render('fileSystem', {userData});
 });
 
 app.post('/deleteFile', async (req, res) => {
@@ -102,7 +102,32 @@ app.post('/createFile', async (req, res) => {
   userData.files = fileData.nodes;
   userData.personalFileCount = (userData.files) ? userData.files.length : 0;
   res.cookie('cookieData', userData);
-  res.redirect('./dashboard');
+  res.redirect('./fileSystem');
+});
+
+// app.get("/file?/*?/:fileName", async (req, res) => {
+//   let userData = cookieDataToObject(req);
+//   let username = userData.username;
+//   if(!username) return res.send("You are not logged in");
+//   let fileName = req.params.fileName;
+//   let path = Object.values(req.params);
+//   path.pop();
+//   path = path.join("/");
+//   console.log(req.params);
+//   // let fileData = await api.getFile(username, fileName);
+//   // let fileContent = fileData.node.content;
+//   // get file content
+//   // res.render('file', {fileContent, fileName, userData});
+// });
+
+app.get("/file/:fileName", async (req, res) => {
+  let userData = cookieDataToObject(req);
+  let username = userData.username;
+  if(!username) return res.send("You are not logged in");
+  let fileName = req.params.fileName;
+
+  let fileData = await api.getFile(username, fileName);
+  res.render('file', {file: fileData.nodes[0]});
 });
 
 app.get('/delete', async (req, res) => {
