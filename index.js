@@ -78,9 +78,22 @@ app.post('/signup', async (req, res) => {
 app.get('/fileSystem', async (req, res) => {
   let userData = cookieDataToObject(req);
   (userData.files) ? console.log(userData.files) : console.log("No Files Exist");
-  res.render('fileSystem', {userData});
+  res.render('fileSystem', userData);
 });
 
+app.post('/deleteFile', async (req, res) => {
+  console.log("Deleting File");
+  let userData = cookieDataToObject(req);
+  let username = userData.username;
+  let { fileId } = req.body;
+  console.log(fileId);
+  await api.sendRequest("/filesystem/" + username + "/" + fileId, "DELETE");
+  let files = await api.getUserFiles(username);
+  userData.files = files.nodes;
+  userData.personalFileCount--;
+  res.cookie("cookieData", userData);
+  res.redirect("/fileSystem");
+})
 app.post('/createFile', async (req, res) => {
   let userData = cookieDataToObject(req);
   const { fileName, textContent } = req.body;
@@ -90,21 +103,8 @@ app.post('/createFile', async (req, res) => {
   userData.files = fileData.nodes;
   userData.personalFileCount = (userData.files) ? userData.files.length : 0;
   res.cookie('cookieData', userData);
-  res.redirect('./fileSystem');
+  res.redirect('./dashboard');
 });
-
-app.post('/deleteFile', async (req, res) => {
-  console.log("Deleting File");
-  let userData = cookieDataToObject(req);
-  let username = userData.username;
-  let node_id = req.body;
-  await api.sendRequest("/filesystem/" + username + "/" + node_id, "DELETE");
-  let files = await api.getUserFiles(username);
-  userData.files = files;
-  userData.personalFileCount--;
-  res.cookie("cookieData", userData);
-  res.redirect("/fileSystem");
-})
 
 app.get('/delete', async (req, res) => {
   let userData = cookieDataToObject(req);
